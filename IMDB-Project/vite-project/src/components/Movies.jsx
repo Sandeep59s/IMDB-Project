@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 import axios from "axios";
 import Pagination from "./Pagination";
 
-function Movies() {
+function Movies({ handleAddToWatchList , watchlist }) {
   const [movies, setMovies] = useState([]);
   const [pageNo, setPageNo] = useState(1);
 
@@ -14,8 +14,8 @@ function Movies() {
   const prevPageCtr = () => {
     if (pageNo === 1) {
       setPageNo(pageNo);
-    }else{
-    setPageNo(pageNo - 1);
+    } else {
+      setPageNo(pageNo - 1);
     }
   };
 
@@ -30,32 +30,36 @@ function Movies() {
   }, [pageNo]);
 
   return (
-    <div>
-      <div
-        style={{ color: "#ff0000" }}
-        className="text-3xl font-bold text-center m-6"
-      >
-        <h1>Trending Movies</h1>
-      </div>
+    <>
+      <div>
+        <div
+          style={{ color: "#ff0000" }}
+          className="text-3xl font-bold text-center m-6"
+        >
+          <h1>Trending Movies</h1>
+        </div>
 
-      <div className="flex justify-evenly flex-wrap gap-6">
-        {movies.map(function (movieObject) {
-          return (
-            <MovieCard
-              name={movieObject.title}
-              //   this are props
-              posterPath={movieObject.poster_path}
-            />
-          );
-        })}
-      </div>
+        <div className="flex justify-evenly flex-wrap gap-6">
+          {movies.map(function (movieObject) {
+            return (
+              <MovieCard
+                //   this are props
 
-      <Pagination
-        nextPageFn={nextPageCtr}
-        prevPageFn={prevPageCtr}
-        pageNumber={pageNo}
-      />
-    </div>
+                movieObject={movieObject}
+                handleAddToWatchList={handleAddToWatchList}
+                watchlist={watchlist}
+              />
+            );
+          })}
+        </div>
+
+        <Pagination
+          nextPageFn={nextPageCtr}
+          prevPageFn={prevPageCtr}
+          pageNumber={pageNo}
+        />
+      </div>
+    </>
   );
 }
 
