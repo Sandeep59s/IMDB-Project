@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-
 const bannerUrl = [
   {
     backdrop_path: "/f1AQhx6ZfGhPZFTVKgxG91PhEYc.jpg",
@@ -41,16 +40,14 @@ const bannerUrl = [
   {
     backdrop_path: "/sQLMaESdeELB7Dl8HdxfGlZYRzu.jpg",
     title: "The Holdovers",
-  }
+  },
 ];
 function Banner() {
-  
-  const [ Index,setIndex ]=useState(0);
-  useEffect(()=>{
-    const idx = Math.floor(Math.random() *10);
+  const [Index, setIndex] = useState(0);
+  useEffect(() => {
+    const idx = Math.floor(Math.random() * 10);
     setIndex(idx);
-  },[])
-  
+  }, []);
 
   return (
     <div
@@ -59,7 +56,10 @@ function Banner() {
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${bannerUrl[Index].backdrop_path})`,
       }}
     >
-      <div style={{color :'#ff0000'}} className="text-white w-full text-center text-3xl">
+      <div
+        style={{ color: "#ff0000" }}
+        className="text-white w-full text-center text-3xl"
+      >
         {bannerUrl[Index].title}
       </div>
     </div>

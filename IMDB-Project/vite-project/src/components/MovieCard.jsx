@@ -17,7 +17,7 @@ function MovieCard({ movieObject, handleAddToWatchList, watchlist }) {
       }}
     >
       {/* using ternary opertor */}
-      
+
       {doesContain(movieObject) ? (
         <div
           // onClick={() => handleAddToWatchList(movieObject)}

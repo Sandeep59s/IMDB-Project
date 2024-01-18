@@ -1,6 +1,6 @@
 import React from "react";
 
-function Pagination( {nextPageFn, prevPageFn, pageNumber }) {
+function Pagination({ nextPageFn, prevPageFn, pageNumber }) {
   return (
     <div
       style={{ backgroundColor: "#ff0000" }}
