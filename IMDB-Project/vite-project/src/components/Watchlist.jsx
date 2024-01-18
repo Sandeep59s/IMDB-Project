@@ -1,6 +1,15 @@
 import React from "react";
+import { useState } from "react";
 
 function Watchlist({ watchList }) {
+
+  const [search, setSearch] = useState('')
+
+  const handleSearch=(e)=>{
+    setSearch(e.target.value);
+    //console.log(e.target.value);
+  }
+
   return (
     <>
       {/* genre based filtering purpose */}
@@ -11,6 +20,8 @@ function Watchlist({ watchList }) {
           className="bg-gray-500 h-[3rem] w-[28rem] px-4 text-2xl border border-2 rounded-xl border-red-900 outline-none "
           type="text"
           placeholder="Search Movies..."
+          onChange={handleSearch}
+          value={search}
         />
       </div>
 
@@ -28,7 +39,9 @@ function Watchlist({ watchList }) {
             </tr>
           </thead>
           <tbody className="bg-gray-600/90 rounded-xl">
-            {watchList.map((movieObj) => (
+            {watchList.filter((movieObj)=>(
+              movieObj.title.toLowerCase().includes(search.toLocaleLowerCase()) 
+            )).map((movieObj) => (
               <tr className="border-2 border-red-900 rounded-xl">
                 <td className="flex items-center px-6 py-6 ">
                   <img
@@ -36,7 +49,7 @@ function Watchlist({ watchList }) {
                     src={`https://image.tmdb.org/t/p/original/${movieObj.backdrop_path}`}
                     alt=""
                   />
-                  <div className="m-2 text-xl">{movieObj.title}</div>
+                  <div className="mx-4 text-xl">{movieObj.title}</div>
                 </td>
                 <td>{movieObj.vote_average}</td>
                 <td>{movieObj.popularity}</td>

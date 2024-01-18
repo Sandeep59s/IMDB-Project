@@ -4,7 +4,7 @@ function Pagination( {nextPageFn, prevPageFn, pageNumber }) {
   return (
     <div
       style={{ backgroundColor: "#ff0000" }}
-      className=" h-[50px] mt-8 mr-[20%] ml-[20%] flex justify-center p-3"
+      className=" h-[50px] mt-8 mr-[20%] ml-[20%] flex justify-center p-3 rounded-xl"
     >
       <div
         onClick={prevPageFn}

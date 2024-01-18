@@ -26,6 +26,7 @@ function Movies({ handleAddToWatchList , watchlist }) {
       )
       .then(function (res) {
         setMovies(res.data.results);
+        // console.log(res);
       });
   }, [pageNo]);
 

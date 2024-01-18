@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
 const bannerUrl = [
@@ -44,19 +44,23 @@ const bannerUrl = [
   }
 ];
 function Banner() {
-
-
-  const idx = Math.floor(Math.random() *10);
+  
+  const [ Index,setIndex ]=useState(0);
+  useEffect(()=>{
+    const idx = Math.floor(Math.random() *10);
+    setIndex(idx);
+  },[])
+  
 
   return (
     <div
       className="h-[6vh] md:h-[72vh] bg-cover bg-center flex items-end"
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/${bannerUrl[idx].backdrop_path})`,
+        backgroundImage: `url(https://image.tmdb.org/t/p/original/${bannerUrl[Index].backdrop_path})`,
       }}
     >
       <div style={{color :'#ff0000'}} className="text-white w-full text-center text-3xl">
-        {bannerUrl[idx].title}
+        {bannerUrl[Index].title}
       </div>
     </div>
   );
