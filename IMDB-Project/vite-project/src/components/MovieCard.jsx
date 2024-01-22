@@ -1,6 +1,6 @@
 import React from "react";
 
-function MovieCard({ movieObject, handleAddToWatchList, watchlist }) {
+function MovieCard({ movieObject, handleAddToWatchList, watchlist , handleDeleteFromWatchList}) {
   function doesContain(movieObject) {
     for (let i = 0; i < watchlist.length; i++) {
       if (watchlist[i].id === movieObject.id) {
@@ -20,7 +20,7 @@ function MovieCard({ movieObject, handleAddToWatchList, watchlist }) {
 
       {doesContain(movieObject) ? (
         <div
-          // onClick={() => handleAddToWatchList(movieObject)}
+          onClick={() => handleDeleteFromWatchList(movieObject)}
           className="absolute top-2 right-2 text-white text-xl hover:text-red-500 hover:scale-150 duration-500"
         >
           <button> &#10060;</button>
