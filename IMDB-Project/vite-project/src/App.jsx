@@ -4,6 +4,8 @@ import Movies from "./components/Movies";
 import Watchlist from "./components/Watchlist";
 import { useState, useEffect } from "react";
 
+import { MovieContext } from "./components/MovieContext";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <MovieContext.Provider value={{handleAddToWatchList , watchlist , handleDeleteFromWatchList , setWatchlist}}>
+
         <NavBar />
 
         <Routes>
@@ -43,12 +47,8 @@ function App() {
             path="/"
             element={
               <>
-                <Banner />{" "}
-                <Movies
-                  handleAddToWatchList={handleAddToWatchList}
-                  watchlist={watchlist}
-                  handleDeleteFromWatchList ={handleDeleteFromWatchList}
-                />
+                <Banner />
+                <Movies />
               </>
             }
           />
@@ -57,14 +57,12 @@ function App() {
             path="/watchlist"
             element={
               <>
-                <Watchlist watchList={watchlist} 
-                setWatchList={setWatchlist} 
-                handleDeleteFromWatchList={handleDeleteFromWatchList}
-                />
+                <Watchlist />
               </>
             }
           />
         </Routes>
+        </MovieContext.Provider>
       </BrowserRouter>
     </>
   );
