@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 function MovieCard({ movieObject}) {
 
-  let {watchlist , handleAddToWatchList , handleDeleteFromWatchList} = useContext(MovieContext)
+  let {watchlist , handleAddToWatchList , handleDeleteFromWatchList} = useContext(MovieContext);
 
   function doesContain(movieObject) {
     for (let i = 0; i < watchlist.length; i++) {

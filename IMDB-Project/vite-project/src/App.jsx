@@ -19,9 +19,9 @@ function App() {
   };
 
   const handleDeleteFromWatchList = (movieObject) => {
-    const updatedWatchlist = watchlist.filter((movieObj) => {
-      return movieObj.id !== movieObject.id;
-    });
+    const updatedWatchlist = watchlist.filter((movieObj) => (
+       movieObj.id !== movieObject.id
+    ));
     setWatchlist(updatedWatchlist);
     localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
   };
@@ -69,3 +69,4 @@ function App() {
 }
 
 export default App;
+
